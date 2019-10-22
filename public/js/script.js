@@ -9,15 +9,15 @@ function confirmation(id){
 function modif(id){
   pseudoTab = document.getElementById('pseudo'+id);
   emailTab = document.getElementById('email'+id);
-  mdpTab = document.getElementById('mdp'+id);
+  passwordTab = document.getElementById('password'+id);
 
   let pseudo = pseudoTab.innerHTML;
   let email = emailTab.innerHTML;
-  let mdp = mdpTab.innerHTML;
+  let password = passwordTab.innerHTML;
 
   pseudoTab.innerHTML = "<input required type='text' name='pseudo' value='" + pseudo +"'>";
   emailTab.innerHTML = "<input required type='text' name='email' value='" + email +"'>";
-  mdpTab.innerHTML = "<input required type='text' name='mdp' value='" + mdp +"'>";
+  passwordTab.innerHTML = "<input required type='text' name='password' value='" + password +"'>";
 
   document.getElementById('bouton'+id).innerHTML = "<input type='submit' class='btn btn-success' value='modifier'>";
   document.getElementById('formModif').action = "index.php?action=modifier&id="+id;     
@@ -61,7 +61,7 @@ function readURL(input) {
       var reader = new FileReader();
 
       reader.onload = function (e) {
-        $('#blah').attr('src', e.target.result);
+        $('#preview').attr('src', e.target.result);
       }
 
       reader.readAsDataURL(input.files[0]);

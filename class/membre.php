@@ -5,7 +5,8 @@ class Membre{
     private $id;
     private $pseudo;
     private $email;
-    private $mdp;
+    private $password;
+    private $img;
 
     function __construct(array $donnees = null){
         if($donnees){
@@ -22,6 +23,8 @@ class Membre{
         }
     }
 
+
+    /*-------- GETTERS AND SETTERS --------*/
 	public function getId() {
 		return $this->id;
 	}
@@ -46,12 +49,20 @@ class Membre{
 		$this->email = $email;
 	}
 
-	public function getMdp() {
-		return $this->mdp;
+	public function getPassword() {
+		return $this->password;
 	}
 
-	public function setMdp($mdp) {
-		$this->mdp = $mdp;
+	public function setPassword($password) {
+		$this->password = $password;
+	}
+
+	public function getImage() {
+		return $this->image;
+	}
+
+	public function setImage($image) {
+		$this->image = $image;
 	}
 
 }

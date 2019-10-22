@@ -31,9 +31,6 @@ if(!empty($_GET)){
             case 'supprimer':
                 $controller->suppression($id);
                 break;
-            case 'formulaire':
-                $controller->formulaire($_POST,$_FILES);
-                break;
             default:
                 require 'view/error404.php';
                 break;

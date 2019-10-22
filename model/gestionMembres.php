@@ -4,7 +4,7 @@ class GestionMembres{
 
     function connexion(){
         try{
-            $pdo = new PDO("mysql:host=localhost; dbname=stage_1; charset=utf8", 'root', '');
+            $pdo = new PDO("mysql:host=localhost; dbname=stage_1; charset=utf8", 'root', 'mysql');
             array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
             return $pdo;
         }
@@ -13,13 +13,14 @@ class GestionMembres{
         }
     }
 
-    function gestionInscription(Membre $donnees){
+    function gestionInscription(Membre $membre){
         $pdo = $this->connexion();
-        $requete = "INSERT INTO membres (pseudo , email, mdp) VALUES ( :pseudo, :email, :mdp)";
+        $requete = "INSERT INTO membres (pseudo , email, password, image) VALUES ( :pseudo, :email, :password, :image)";
         $insert = $pdo->prepare($requete);
-        $insert->execute(['pseudo'=>$donnees->getPseudo(),
-                        'email'=>$donnees->getEmail(),
-                        'mdp'=>$donnees->getMdp()]);
+        $insert->execute(['pseudo'=>$membre->getPseudo(),
+                        'email'=>$membre->getEmail(),
+                        'password'=>$membre->getPassword(),
+                        'image'=>$membre->getImage()]);
     }
 
     function gestionAffichage(){
@@ -40,18 +41,10 @@ class GestionMembres{
     function gestionModification(Membre $membre){
         $pdo = $this->connexion();
         $id = $membre->getId();
-        $requete = "UPDATE membres SET pseudo = :pseudo, email = :email, mdp= :mdp WHERE id=$id";
+        $requete = "UPDATE membres SET pseudo = :pseudo, email = :email, password= :password WHERE id=$id";
         $modifier = $pdo->prepare($requete);
         $modifier->execute(['pseudo'=>$membre->getPseudo(),
                             'email'=>$membre->getEmail(),
-                            'mdp'=>$membre->getMdp()]);
-    }
-
-    function formulaire(array $donnees){
-         $pdo = $this->connexion();
-         $query = "INSERT INTO form (fichier, prenom) VALUES (:fichier, :prenom)";
-         $insertion = $pdo->prepare($query);
-         $insertion->execute(['fichier'=>$donnees['image'],
-                              'prenom'=>$donnees['prenom']]);
+                            'password'=>$membre->getPassword()]);
     }
 }

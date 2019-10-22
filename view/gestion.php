@@ -11,6 +11,7 @@ ob_start();
                 <th scope="col">pseudo</th>
                 <th scope="col">email</th>
                 <th scope="col">mot de passe</th>
+                <th scope="col">image</th>
             </tr>
         </thead>
         <tbody>
@@ -20,7 +21,8 @@ ob_start();
                 <td><?=$membre->getId()?></td>
                 <td id="pseudo<?=$membre->getId()?>"><?=$membre->getPseudo()?></td>
                 <td id="email<?=$membre->getId()?>"><?=$membre->getEmail()?></td>
-                <td id="mdp<?=$membre->getId()?>"><?=$membre->getMdp()?></td> 
+                <td id="password<?=$membre->getId()?>"><?=$membre->getPassword()?></td> 
+                <td ><img class='imgTab' src='public/img/<?= $membre->getImage();?>'/></td> 
                 <td id="bouton<?=$membre->getId()?>"><span class="btn btn-success boutonModif" onclick="modif(<?=$membre->getId()?>)" value="<?=$membre->getId()?>" >modifier</span></td>    
                 <td><span onclick="confirmation(<?=$membre->getId()?>)" class="btn btn-danger" >supprimer</span></td>            
             </tr>
