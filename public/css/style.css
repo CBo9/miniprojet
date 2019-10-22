@@ -1,0 +1,12 @@
+#visible:hover{
+    cursor: pointer;
+}
+
+body,html{
+	background-color: #343a40;
+	color:white;
+}
+
+#blah{
+	width: 200px;
+}
