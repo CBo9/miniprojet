@@ -6,7 +6,7 @@ class Membre{
     private $pseudo;
     private $email;
     private $password;
-    private $img;
+    private $image;
 
     function __construct(array $donnees = null){
         if($donnees){

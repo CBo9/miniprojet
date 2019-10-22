@@ -17,7 +17,7 @@ ob_start();
         <input type="file" name="image" id="imgInp">
         <br><br>
         <img id="preview" src="#" alt=" " />
-        <br>
+        <br><br>
         <input type="submit" name="inscription" value="inscription" class="btn btn-secondary">
         </div>
     </form>
