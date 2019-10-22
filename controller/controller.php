@@ -5,9 +5,9 @@ require 'class/membre.php';
 
 class Controller{
 
-    function inscription(array $donnees){
+    function inscription(){
         $gestion = new GestionMembres();
-        $membre = new Membre($donnees);
+        $membre = new Membre($_POST);
         if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0)  {
             if ($_FILES['image']['size'] <= 1000000) {
 
@@ -45,9 +45,9 @@ class Controller{
         header('location: index.php?action=gestion');
     }
 
-    function modification($id,array $donnees){
+    function modification($id){
         $gestion = new GestionMembres();
-        $membre = new Membre($donnees);
+        $membre = new Membre($_POST);
         $membre->setId($id);
         $gestion->gestionModification($membre);
         header('location: index.php?action=gestion');    

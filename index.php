@@ -23,10 +23,10 @@ if(!empty($_GET)){
                 $controller->affichage();
                 break;
             case 'inscrire':
-                $controller->inscription($_POST);
+                $controller->inscription();
                 break;
             case 'modifier':
-                $controller->modification($id, $_POST);
+                $controller->modification($id);
                 break;
             case 'supprimer':
                 $controller->suppression($id);
