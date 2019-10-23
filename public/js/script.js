@@ -10,14 +10,20 @@ function modif(id){
   pseudoTab = document.getElementById('pseudo'+id);
   emailTab = document.getElementById('email'+id);
   passwordTab = document.getElementById('password'+id);
+  imageTab = document.getElementById('image'+id);
+
 
   let pseudo = pseudoTab.innerHTML;
   let email = emailTab.innerHTML;
   let password = passwordTab.innerHTML;
+  let image = document.getElementById('img'+id).src;
+
 
   pseudoTab.innerHTML = "<input required type='text' name='pseudo' value='" + pseudo +"'>";
   emailTab.innerHTML = "<input required type='text' name='email' value='" + email +"'>";
   passwordTab.innerHTML = "<input required type='text' name='password' value='" + password +"'>";
+  imageTab.innerHTML = "<input oninput='changeImage()' id='fileInput' type='file' name='image'>";
+  document.getElementById('fileInput').removeAttribute("required");
 
   document.getElementById('bouton'+id).innerHTML = "<input type='submit' class='btn btn-success' value='modifier'>";
   document.getElementById('formModif').action = "index.php?action=modifier&id="+id;     

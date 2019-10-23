@@ -3,7 +3,7 @@ $titre= 'gestion';
 ob_start();
 ?>
 
-<form id='formModif' method="POST" >
+<form id='formModif' method="POST" enctype="multipart/form-data" >
     <table class="table table-dark">
         <thead>
             <tr>
@@ -22,7 +22,7 @@ ob_start();
                 <td id="pseudo<?=$membre->getId()?>"><?=$membre->getPseudo()?></td>
                 <td id="email<?=$membre->getId()?>"><?=$membre->getEmail()?></td>
                 <td id="password<?=$membre->getId()?>"><?=$membre->getPassword()?></td> 
-                <td ><img class='imgTab' src='public/img/<?= $membre->getImage();?>'/></td> 
+                <td id="image<?=$membre->getId()?>"><img class='imgTab' id="img<?=$membre->getId()?>" src='public/img/<?= $membre->getImage();?>'/></td> 
                 <td id="bouton<?=$membre->getId()?>"><span class="btn btn-success boutonModif" onclick="modif(<?=$membre->getId()?>)" value="<?=$membre->getId()?>" >modifier</span></td>    
                 <td><span onclick="confirmation(<?=$membre->getId()?>)" class="btn btn-danger" >supprimer</span></td>            
             </tr>

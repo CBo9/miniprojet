@@ -8,26 +8,21 @@ class Controller{
     function inscription(){
         $gestion = new GestionMembres();
         $membre = new Membre($_POST);
-        if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0)  {
-            if ($_FILES['image']['size'] <= 1000000) {
-
-                $extension_autorisees = ["jpg", "jpeg", "png", "gif"];
-                $info = pathinfo($_FILES['image']['name']);       
-                $extension_uploadee = $info['extension'];
-                
-                if (in_array($extension_uploadee, $extension_autorisees)) {
-
+        $image= 'default.jpg';
+        if(!empty($_POST['pseudo']) AND !empty($_POST['email']) AND !empty($_POST['password'])){
+            if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0)  {
+                if ($_FILES['image']['size'] <= 1000000) {
                     $date = date('m_d_Y_h_i_s', time());
                     $image = $date . basename($_FILES['image']['name']) ;
                     move_uploaded_file($_FILES['image']['tmp_name'], 'public/img/'. $image);
-                    
-                    $membre->setImage($image);
-                    $gestion->gestionInscription($membre);
                 }
             }
+        $membre->setImage($image);
+        print_r($membre);
+        $gestion->gestionInscription($membre);
+        header('location: index.php?action=gestion');
         }
         
-        header('location: index.php?action=gestion');
     }
 
     function affichage(){
@@ -41,6 +36,10 @@ class Controller{
 
     function suppression($id){
         $gestion = new GestionMembres();
+        $image = $gestion->getMembreImage($id);
+        if($image != 'default.jpg'){
+            unlink('public/img/' . $image );
+        }
         $gestion->gestionSuppression($id);
         header('location: index.php?action=gestion');
     }
@@ -49,6 +48,19 @@ class Controller{
         $gestion = new GestionMembres();
         $membre = new Membre($_POST);
         $membre->setId($id);
+        $image = $gestion->getMembreImage($id);
+        if (isset($_FILES['image']) AND $__FILES['image']['error'] == 0)  {
+            if ($_FILES['image']['size'] <= 1000000) {
+
+                    $date = date('m_d_Y_h_i_s', time());
+                    unlink('public/img/' . $image );
+                    $image = $date . basename($_FILES['image']['name']) ;
+                    move_uploaded_file($_FILES['image']['tmp_name'], 'public/img/'. $image);
+                    
+                
+            }
+        }
+        $membre->setImage($image);
         $gestion->gestionModification($membre);
         header('location: index.php?action=gestion');    
     }

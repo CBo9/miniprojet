@@ -14,7 +14,7 @@ ob_start();
         <input type="password" name="password" id="password" class="form-control" placeholder="Entrez votre mot de passe">
         <span onclick="showPassword('password')" id="visible">afficher mot de passe</span>
         <br><br>
-        <input type="file" name="image" id="imgInp">
+        <input type="file" name="image" id="imgInp" accept=".gif,.png,.jpg">
         <br><br>
         <img id="preview" src="#" alt=" " />
         <br><br>
