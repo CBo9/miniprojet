@@ -10,3 +10,7 @@ body,html{
 #preview,.imgTab{
 	width: 200px;
 }
+
+.disparait{
+	display:none;
+	}
