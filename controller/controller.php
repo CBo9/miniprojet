@@ -52,8 +52,10 @@ class Controller{
         if (isset($_FILES['image']) AND $__FILES['image']['error'] == 0)  {
             if ($_FILES['image']['size'] <= 1000000) {
 
+                    if($image != 'default.jpg'){
+                        unlink('public/img/' . $image );
+                    } 
                     $date = date('m_d_Y_h_i_s', time());
-                    unlink('public/img/' . $image );
                     $image = $date . basename($_FILES['image']['name']) ;
                     move_uploaded_file($_FILES['image']['tmp_name'], 'public/img/'. $image);
                     
