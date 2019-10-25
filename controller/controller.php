@@ -49,7 +49,7 @@ class Controller{
         $membre = new Membre($_POST);
         $membre->setId($id);
         $image = $gestion->getMembreImage($id);
-        if (isset($_FILES['image']) AND $__FILES['image']['error'] == 0)  {
+        if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0)  {
             if ($_FILES['image']['size'] <= 1000000) {
 
                     if($image != 'default.jpg'){

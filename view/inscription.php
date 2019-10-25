@@ -13,10 +13,9 @@ ob_start();
         <label for="password">Mot de passe</label>
         <input type="password" name="password" id="password" class="form-control" placeholder="Entrez votre mot de passe">
         <span onclick="showPassword('password')" id="visible">afficher mot de passe</span>
+        <input type="file" name="image" id="imgInp" accept=".gif,.png,.jpg" hidden>
         <br><br>
-        <input type="file" name="image" oninput="disparition()" id="imgInp" accept=".gif,.png,.jpg">
-        <br><br>
-        <label for="imgInp"><img id="preview" src="#" alt=" " /></label>
+        <label for="imgInp" class="buttonFile">Choisir une image <img id="preview" src="#" alt=" " /></label>
         <br><br>
         <input type="submit" name="inscription" value="inscription" class="btn btn-secondary">
         </div>

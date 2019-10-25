@@ -22,7 +22,7 @@ function modif(id){
   pseudoTab.innerHTML = "<input required type='text' name='pseudo' value='" + pseudo +"'>";
   emailTab.innerHTML = "<input required type='text' name='email' value='" + email +"'>";
   passwordTab.innerHTML = "<input required type='text' name='password' value='" + password +"'>";
-  imageTab.innerHTML = "<input oninput='disparition()' onchange='readURL(this)' id='imgInp' type='file' name='image'><label for='imgInp'><img id='preview' src='#' alt=' ' /></label>";
+  imageTab.innerHTML = "<input  onchange='readURL(this)' id='imgInp' type='file' name='image' hidden><label for='imgInp' class='buttonFile'>Choisir une image <img id='preview' src='"+image+"' alt=' ' /></label>";
   document.getElementById('imgInp').removeAttribute("required");
 
   document.getElementById('bouton'+id).innerHTML = "<input type='submit' class='btn btn-success' value='modifier'>";
@@ -63,14 +63,6 @@ function showPassword(id) {
     y.innerHTML = "afficher mot de passe";
   }
 }
-
-function disparition(){
-    let element = document.getElementById('imgInp');
-    element.classList.add("disparait");
-    element.removeEventListener("input",disparition);
-  }
-
-
 function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();

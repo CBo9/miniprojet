@@ -1,4 +1,7 @@
-#visible:hover{
+html,body{
+	scrollbar-width:none;
+}
+#visible:hover,.btn{
     cursor: pointer;
 }
 
@@ -13,4 +16,30 @@ body,html{
 
 .disparait{
 	display:none;
-	}
+}
+
+.buttonFile{
+	background-color: #FF471C;
+	border-radius:20px;
+	padding:20px;
+	position :relative;
+	z-index:1;
+	cursor:pointer;
+}
+
+.buttonFile::after{
+	content:"";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right:0;
+	bottom:0;
+	opacity:0;
+	z-index: -1;
+	border-radius:20px;
+	background-color: #D93D19;
+}
+
+.buttonFile:hover::after{
+	opacity:1;
+}
